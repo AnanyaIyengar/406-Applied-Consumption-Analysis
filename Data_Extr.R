@@ -374,4 +374,46 @@ con12356789 <- inner_join(con1235678, consumption_level9_68, by = "primarykey")
 con1235678910 <- inner_join(con12356789, consumption_level10_68, by = "primarykey")
 
 
+### NSSO Round 64 ###
 
+##Importing the extracted dta files 
+
+consumption_level1_64 <- read_dta("level1.dta")
+consumption_level2_64 <- read_dta("level2.dta")
+consumption_level3_64 <- read_dta("level3.dta")
+consumption_level4_64 <- read_dta("level4.dta")
+consumption_level5_64 <- read_dta("level5.dta")
+consumption_level6_64 <- read_dta("level6.dta")
+consumption_level7_64 <- read_dta("level7.dta")
+consumption_level_summ_64 <- read_dta("summary.dta")
+
+## Creating the primary key for merging the levels 
+
+consumption_level1_64$primarykey <- paste0(consumption_level1_64$fsu, consumption_level1_64$stratum, consumption_level1_64$substrm, 
+                                           consumption_level1_64$hamlet, consumption_level1_64$ssstr, consumption_level1_64$hhno)
+
+
+consumption_level2_64$primarykey <- paste0(consumption_level2_64$fsu, consumption_level2_64$stratum, consumption_level2_64$substrm, 
+                                           consumption_level2_64$hamlet, consumption_level2_64$ssstr, consumption_level2_64$hhno)
+
+
+consumption_level4_64$primarykey <- paste0(consumption_level4_64$fsu, consumption_level4_64$stratum, consumption_level4_64$substrm, 
+                                           consumption_level4_64$hamlet, consumption_level4_64$ssstr, consumption_level4_64$hhno)
+
+consumption_level5_64$primarykey <- paste0(consumption_level5_64$fsu, consumption_level5_64$stratum, consumption_level5_64$substrm, 
+                                           consumption_level5_64$hamlet, consumption_level5_64$ssstr, consumption_level5_64$hhno)
+
+consumption_level6_64$primarykey <- paste0(consumption_level6_64$fsu, consumption_level6_64$stratum, consumption_level6_64$substrm, 
+                                           consumption_level6_64$hamlet, consumption_level6_64$ssstr, consumption_level6_64$hhno)
+
+consumption_level7_64$primarykey <- paste0(consumption_level7_64$fsu, consumption_level7_64$stratum, consumption_level7_64$substrm, 
+                                           consumption_level7_64$hamlet, consumption_level7_64$ssstr, consumption_level7_64$hhno)
+
+
+## Merging the levels
+
+con12_64 <- inner_join(consumption_level1_64, consumption_level2_64, by = "primarykey")
+con124_64 <- inner_join(con12_64, consumption_level4_64, by = "primarykey")
+con1245_64 <- inner_join(con124_64, consumption_level5_64, by = "primarykey")
+con12456_64 <- inner_join(con1245_64, consumption_level6_64, by = "primarykey")
+con124567_64 <- inner_join(con12456_64, consumption_level7_64, by = "primarykey")
