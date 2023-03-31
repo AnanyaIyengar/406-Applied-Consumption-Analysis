@@ -17,6 +17,7 @@ setwd("C:/Ananya Iyengar/Delhi School of Economics/406_Applied Consumption Analy
 library(readr) #to extract .txt files
 library(dplyr) #for data manipulation
 library(fastDummies) #to comvert categorical variables into dummies
+library(haven)
 
 ######################################################################################################
 
