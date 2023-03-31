@@ -300,68 +300,137 @@ consumption_level11_68 <- read_fwf(file=consnlvl11,
                                                     blank = col_character(), nss=col_character(),
                                                     nsc= col_character(), mlt = col_character()))
 
+                                   
+ ## Downloading level data 
+write.csv(consumption_level1_68, "level 1.csv")
+write.csv(consumption_level2_68, "level 2.csv")
+write.csv(consumption_level_3_68, "level 3.csv")
+write.csv(consumption_level4_68, "level 4.csv")
+write.csv(consumption_level5_68, "level 5.csv")
+write.csv(consumption_level6_68, "level 6.csv")
+write.csv(consumption_level7_68, "level 7.csv")
+write.csv(consumption_level8_68, "level 8.csv")
+write.csv(consumption_level9_68, "level 9.csv")
+write.csv(consumption_level10_68, "level 10.csv")
+write.csv(consumption_level11_68, "level 11.csv")                                  
+                                   
+                                   
+                                   
+                                
 
 #Creating the Primary Key 
   
-consumption_level1_68$primarykey <- paste0(consumption_level1_68$fsuslno, consumption_level1_68$hamletgroup, consumption_level1_68$secondstgstrno, consumption_level1_68$hh)
-
-
+#Creating the Primary Key 
+consumption_level1_68$primarykey <- paste0(consumption_level1_68$fsuslno, consumption_level1_68$stratum, consumption_level1_68$substratum , 
+                                                                                                                consumption_level1_68$hamletgroup, consumption_level1_68$secondstgstrno, consumption_level1_68$hh)
+                                                                     
+                                                                     
 consumption_level2_68$fsuslno <- substr(consumption_level2_68$commonid, 4, 8)
 consumption_level2_68$hamletgroup <- substr(consumption_level2_68$commonid, 32, 32)
 consumption_level2_68$secondstgstrno <- substr(consumption_level2_68$commonid, 33, 33)
 consumption_level2_68$hh <- substr(consumption_level2_68$commonid, 34, 35)
-consumption_level2_68$primarykey <- paste0(consumption_level2_68$fsuslno, consumption_level2_68$hamletgroup, consumption_level2_68$secondstgstrno, consumption_level2_68$hh)
+consumption_level2_68$stratum <- substr(consumption_level2_68$commonid, 21, 22)
+consumption_level2_68$substratum <- substr(consumption_level2_68$commonid, 23, 24)
+consumption_level2_68$primarykey <- paste0(consumption_level2_68$fsuslno, consumption_level2_68$stratum, consumption_level2_68$substratum , 
+consumption_level2_68$hamletgroup, consumption_level2_68$secondstgstrno, consumption_level2_68$hh)
 
-
-consumption_level_3_68$fsuslno <- substr(consumption_level_3_68$commonid, 4, 8)
+                                   consumption_level_3_68$fsuslno <- substr(consumption_level_3_68$commonid, 4, 8)
+consumption_level_3_68$hamletgroup <- substr(consumption_level_3_68$commonid, 32, 32)
 consumption_level_3_68$secondstgstrno <- substr(consumption_level_3_68$commonid, 33, 33)
 consumption_level_3_68$hh <- substr(consumption_level_3_68$commonid, 34, 35)
-consumption_level_3_68$primarykey <- paste0(consumption_level_3_68$fsuslno, consumption_level_3_68$secondstgstrno, consumption_level_3_68$hh)
+consumption_level_3_68$stratum <- substr(consumption_level_3_68$commonid, 21, 22)
+consumption_level_3_68$substratum <- substr(consumption_level_3_68$commonid, 23, 24)
+consumption_level_3_68$primarykey <- paste0(consumption_level_3_68$fsuslno, consumption_level_3_68$stratum, consumption_level_3_68$substratum , 
+consumption_level_3_68$hamletgroup, consumption_level_3_68$secondstgstrno, consumption_level_3_68$hh)
 
-
+                                   
 consumption_level4_68$fsuslno <- substr(consumption_level4_68$commonid, 4, 8)
-consumption_level4_68$secondstgstrno <- substr(consumption_level4_68$commonid, 33, 33)
-consumption_level4_68$hh <- substr(consumption_level4_68$commonid, 34, 35)
-consumption_level4_68$primarykey <- paste0(consumption_level4_68$fsuslno, consumption_level4_68$secondstgstrno, consumption_level4_68$hh)
+                                                                     consumption_level4_68$hamletgroup <- substr(consumption_level4_68$commonid, 32, 32)
+                                                                     consumption_level4_68$secondstgstrno <- substr(consumption_level4_68$commonid, 33, 33)
+                                                                     consumption_level4_68$hh <- substr(consumption_level4_68$commonid, 34, 35)
+                                                                     consumption_level4_68$stratum <- substr(consumption_level4_68$commonid, 21, 22)
+                                                                     consumption_level4_68$substratum <- substr(consumption_level4_68$commonid, 23, 24)
+                                                                     
+                                                                     consumption_level4_68$primarykey <- paste0(consumption_level4_68$fsuslno, consumption_level4_68$stratum, consumption_level4_68$substratum , 
+                                                                                                                consumption_level4_68$hamletgroup, consumption_level4_68$secondstgstrno, consumption_level4_68$hh)
+                                   
+                                   consumption_level5_68$fsuslno <- substr(consumption_level5_68$commonid, 4, 8)
+                                                                     consumption_level5_68$hamletgroup <- substr(consumption_level5_68$commonid, 32, 32)
+                                                                     consumption_level5_68$secondstgstrno <- substr(consumption_level5_68$commonid, 33, 33)
+                                                                     consumption_level5_68$hh <- substr(consumption_level5_68$commonid, 34, 35)
+                                                                     consumption_level5_68$stratum <- substr(consumption_level5_68$commonid, 21, 22)
+                                                                     consumption_level5_68$substratum <- substr(consumption_level5_68$commonid, 23, 24)
+                                                                     
+                                                                     consumption_level5_68$primarykey <- paste0(consumption_level5_68$fsuslno, consumption_level5_68$stratum, consumption_level5_68$substratum , 
+                                                                                                                consumption_level5_68$hamletgroup, consumption_level5_68$secondstgstrno, consumption_level5_68$hh)
+                                   
+                                   consumption_level6_68$fsuslno <- substr(consumption_level6_68$commonid, 4, 8)
+                                                                     consumption_level6_68$hamletgroup <- substr(consumption_level6_68$commonid, 32, 32)
+                                                                     consumption_level6_68$secondstgstrno <- substr(consumption_level6_68$commonid, 33, 33)
+                                                                     consumption_level6_68$hh <- substr(consumption_level6_68$commonid, 34, 35)
+                                                                     consumption_level6_68$stratum <- substr(consumption_level6_68$commonid, 21, 22)
+                                                                     consumption_level6_68$substratum <- substr(consumption_level6_68$commonid, 23, 24)
+                                                                     
+                                                                     consumption_level6_68$primarykey <- paste0(consumption_level6_68$fsuslno, consumption_level6_68$stratum, consumption_level6_68$substratum , 
+                                                                                                                consumption_level6_68$hamletgroup, consumption_level6_68$secondstgstrno, consumption_level6_68$hh)
+                                   
+                                   consumption_level7_68$fsuslno <- substr(consumption_level7_68$commonid, 4, 8)
+                                                                     consumption_level7_68$hamletgroup <- substr(consumption_level7_68$commonid, 32, 32)
+                                                                     consumption_level7_68$secondstgstrno <- substr(consumption_level7_68$commonid, 33, 33)
+                                                                     consumption_level7_68$hh <- substr(consumption_level7_68$commonid, 34, 35)
+                                                                     consumption_level7_68$stratum <- substr(consumption_level7_68$commonid, 21, 22)
+                                                                     consumption_level7_68$substratum <- substr(consumption_level7_68$commonid, 23, 24)
+                                                                     
+                                                                     consumption_level7_68$primarykey <- paste0(consumption_level7_68$fsuslno, consumption_level7_68$stratum, consumption_level7_68$substratum , 
+                                                                                                                consumption_level7_68$hamletgroup, consumption_level7_68$secondstgstrno, consumption_level7_68$hh)
 
-consumption_level5_68$fsuslno <- substr(consumption_level5_68$commonid, 4, 8)
-consumption_level5_68$secondstgstrno <- substr(consumption_level5_68$commonid, 33, 33)
-consumption_level5_68$hh <- substr(consumption_level5_68$commonid, 34, 35)
-consumption_level5_68$primarykey <- paste0(consumption_level5_68$fsuslno, consumption_level5_68$secondstgstrno, consumption_level5_68$hh)
+                                   consumption_level8_68$fsuslno <- substr(consumption_level8_68$commonid, 4, 8)
+                                                                     consumption_level8_68$hamletgroup <- substr(consumption_level8_68$commonid, 32, 32)
+                                                                     consumption_level8_68$secondstgstrno <- substr(consumption_level8_68$commonid, 33, 33)
+                                                                     consumption_level8_68$hh <- substr(consumption_level8_68$commonid, 34, 35)
+                                                                     consumption_level8_68$stratum <- substr(consumption_level8_68$commonid, 21, 22)
+                                                                     consumption_level8_68$substratum <- substr(consumption_level8_68$commonid, 23, 24)
+                                                                     
+                                                                     consumption_level8_68$primarykey <- paste0(consumption_level8_68$fsuslno, consumption_level8_68$stratum, consumption_level8_68$substratum , 
+                                                                                                                consumption_level8_68$hamletgroup, consumption_level8_68$secondstgstrno, consumption_level8_68$hh)
+                                   
+                                   consumption_level9_68$fsuslno <- substr(consumption_level9_68$commonid, 4, 8)
+                                                                     consumption_level9_68$hamletgroup <- substr(consumption_level9_68$commonid, 32, 32)
+                                                                     consumption_level9_68$secondstgstrno <- substr(consumption_level9_68$commonid, 33, 33)
+                                                                     consumption_level9_68$hh <- substr(consumption_level9_68$commonid, 34, 35)
+                                                                     consumption_level9_68$stratum <- substr(consumption_level9_68$commonid, 21, 22)
+                                                                     consumption_level9_68$substratum <- substr(consumption_level9_68$commonid, 23, 24)
+                                                                     
+                                                                     consumption_level9_68$primarykey <- paste0(consumption_level9_68$fsuslno, consumption_level9_68$stratum, consumption_level9_68$substratum , 
+                                                                                                                consumption_level9_68$hamletgroup, consumption_level9_68$secondstgstrno, consumption_level9_68$hh)
 
-consumption_level6_68$fsuslno <- substr(consumption_level6_68$commonid, 4, 8)
-consumption_level6_68$secondstgstrno <- substr(consumption_level6_68$commonid, 33, 33)
-consumption_level6_68$hh <- substr(consumption_level6_68$commonid, 34, 35)
-consumption_level6_68$primarykey <- paste0(consumption_level6_68$fsuslno, consumption_level6_68$secondstgstrno, consumption_level6_68$hh)
-
-consumption_level7_68$fsuslno <- substr(consumption_level7_68$commonid, 4, 8)
-consumption_level7_68$secondstgstrno <- substr(consumption_level7_68$commonid, 33, 33)
-consumption_level7_68$hh <- substr(consumption_level7_68$commonid, 34, 35)
-consumption_level7_68$primarykey <- paste0(consumption_level7_68$fsuslno, consumption_level7_68$secondstgstrno, consumption_level7_68$hh)
-
-
-consumption_level8_68$fsuslno <- substr(consumption_level8_68$commonid, 4, 8)
-consumption_level8_68$secondstgstrno <- substr(consumption_level8_68$commonid, 33, 33)
-consumption_level8_68$hh <- substr(consumption_level8_68$commonid, 34, 35)
-consumption_level8_68$primarykey <- paste0(consumption_level8_68$fsuslno, consumption_level8_68$secondstgstrno, consumption_level8_68$hh)
-
-consumption_level9_68$fsuslno <- substr(consumption_level9_68$commonid, 4, 8)
-consumption_level9_68$secondstgstrno <- substr(consumption_level9_68$commonid, 33, 33)
-consumption_level9_68$hh <- substr(consumption_level9_68$commonid, 34, 35)
-consumption_level9_68$primarykey <- paste0(consumption_level9_68$fsuslno, consumption_level9_68$secondstgstrno, consumption_level9_68$hh)
-
-
-consumption_level10_68$fsuslno <- substr(consumption_level10_68$commonid, 4, 8)
-consumption_level10_68$secondstgstrno <- substr(consumption_level10_68$commonid, 33, 33)
-consumption_level10_68$hh <- substr(consumption_level10_68$commonid, 34, 35)
-consumption_level10_68$primarykey <- paste0(consumption_level10_68$fsuslno, consumption_level10_68$secondstgstrno, consumption_level10_68$hh)
-
-
-consumption_level11_68$fsuslno <- substr(consumption_level11_68$commonid, 4, 8)
-consumption_level11_68$secondstgstrno <- substr(consumption_level11_68$commonid, 33, 33)
-consumption_level11_68$hh <- substr(consumption_level11_68$commonid, 34, 35)
-consumption_level11_68$primarykey <- paste0(consumption_level11_68$fsuslno, consumption_level11_68$secondstgstrno, consumption_level11_68$hh)
-
+                                   
+                                   
+    consumption_level10_68$fsuslno <- substr(consumption_level10_68$commonid, 4, 8)
+                                                                     consumption_level10_68$hamletgroup <- substr(consumption_level10_68$commonid, 32, 32)
+                                                                     consumption_level10_68$secondstgstrno <- substr(consumption_level10_68$commonid, 33, 33)
+                                                                     consumption_level10_68$hh <- substr(consumption_level10_68$commonid, 34, 35)
+                                                                     consumption_level10_68$stratum <- substr(consumption_level10_68$commonid, 21, 22)
+                                                                     consumption_level10_68$substratum <- substr(consumption_level10_68$commonid, 23, 24)
+                                                                     
+                                                                     consumption_level10_68$primarykey <- paste0(consumption_level10_68$fsuslno, consumption_level10_68$stratum, consumption_level10_68$substratum , 
+                                                                                                                consumption_level10_68$hamletgroup, consumption_level10_68$secondstgstrno, consumption_level10_68$hh)                               
+                                   
+                                   
+                                   
+  consumption_level11_68$fsuslno <- substr(consumption_level11_68$commonid, 4, 8)
+                                                                     consumption_level11_68$hamletgroup <- substr(consumption_level11_68$commonid, 32, 32)
+                                                                     consumption_level11_68$secondstgstrno <- substr(consumption_level11_68$commonid, 33, 33)
+                                                                     consumption_level11_68$hh <- substr(consumption_level11_68$commonid, 34, 35)
+                                                                     consumption_level11_68$stratum <- substr(consumption_level11_68$commonid, 21, 22)
+                                                                     consumption_level11_68$substratum <- substr(consumption_level11_68$commonid, 23, 24)
+                                                                     
+                                                                     consumption_level11_68$primarykey <- paste0(consumption_level11_68$fsuslno, consumption_level11_68$stratum, consumption_level11_68$substratum , 
+                                                                                                                consumption_level11_68$hamletgroup, consumption_level11_68$secondstgstrno, consumption_level11_68$hh)                                 
+                                   
+                                   
+                                   
+                                   
 #Merging Data
 
 con12 <- inner_join(consumption_level1_68, consumption_level2_68, by = "primarykey")
