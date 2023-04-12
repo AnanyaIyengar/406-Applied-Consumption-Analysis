@@ -1,0 +1,123 @@
+###APPLIED CONSUMPTION ANALYSIS: CODE OUTLINE###
+###Ananya Iyengar###############################
+
+#Setting Working Directory 
+
+setwd("C:/Ananya Iyengar/Delhi School of Economics/406_Applied Consumption Analysis/ACA Term Paper")
+
+################################################################################
+
+#Loading Libraries
+
+library(micEconAids)
+library(dplyr)
+library(systemfit)
+
+################################################################################
+
+#Loading Data
+
+data("Blanciforti86")
+Blanciforti86 <- Blanciforti86[complete.cases(Blanciforti86),]
+Blanciforti86 <- as.data.frame(Blanciforti86)
+################################################################################
+
+#Variable Descriptions
+
+#There are four categories of food: Food1, Food2, Food3 and Food4. 
+#Note that the AIDS equation requires the following variables: expenditure shares, prices and total expenditure.
+#Then, we use the following variables: 
+
+# - pFood1, pFood2, pFood3, pFood4 : prices of the 4 types of food for all the households
+# - wFood1, wFOod2, wFood3, wFood4 : expenditure shares of the 4 types of food for all the households
+# - xFood : Total Expenditure on food
+
+################################################################################
+
+#Creating vectors for price and expenditure share names 
+
+attach(Blanciforti86)
+
+priceNames <- c( "pFood1", "pFood2", "pFood3", "pFood4" )
+shareNames <- c( "wFood1", "wFood2", "wFood3", "wFood4" )
+
+################################################################################
+
+#Linear Approximation AIDS Equation using the Stone Price Index
+
+#The AIDS Equation is: w = alpha + sum_gamma_pij + beta_ln(x/P) + error
+
+#The system of demand equations is estimated by the Seemingly Unrelated Estimation Method (Zellner, 1962)
+
+
+linear_aids_1 <- aidsEst(priceNames, shareNames, "xFood", data = Blanciforti86, priceIndex = "S")
+summary(linear_aids_1)
+
+#Now, since expenditure shares are seen on both sides of the AIDS expression, it ould lead to simultaneity bias. 
+#To eradicate this problem, we used lagged values of expenditure shares in construction of the price index (Blanciforti et al. 1986)
+
+#Linear Approximation AIDS Model Correcting for Simultaneity (Lagged Stone Index)
+
+linear_aids_2 <- aidsEst(priceNames, shareNames, "xFood", data = Blanciforti86, priceIndex = "SL")
+summary(linear_aids_2)
+
+#Non-Linear AIDS Using the Iterated Linear Least Squares Estimator (Blundell and Robin, 1999)
+
+nonlinear_aids_1 <- aidsEst(priceNames, shareNames, "xFood", data = Blanciforti86, method = "IL", priceIndex = "SL")
+summary(nonlinear_aids_1)
+
+################################################################################
+
+#Testing for Properties of Demand 
+
+#We must specify some value of alpha0 here 
+
+linear_aids_1_coefficients <- coef(linear_aids_1)
+linear_aids_1_coefficients$alpha0 <- 1
+aidsConsist(priceNames, "xFood", coef = linear_aids_1_coefficients, data = Blanciforti86)
+
+linear_aids_2_coefficients <- coef(linear_aids_2)
+linear_aids_2_coefficients$alpha0 <- 1
+aidsConsist(priceNames, "xFood", coef = linear_aids_2_coefficients, data = Blanciforti86)
+
+nonlinear_aids_1_coefficients <- coef(nonlinear_aids_1)
+aidsConsist(priceNames, "xFood", coef = nonlinear_aids_1_coefficients, data = Blanciforti8)
+
+################################################################################
+
+#Computing Elasticities 
+
+pMeans <- colMeans( Blanciforti86[ , priceNames ] )
+wMeans <- colMeans( Blanciforti86[ , shareNames ] )
+xtMean <- mean( Blanciforti86[ , "xFood" ] )
+
+
+#For Linear Model 1
+
+linear_aids_1_el <- aidsElas(linear_aids_1_coefficients, prices = pMeans, shares = wMeans)
+linear_aids_1_el
+linear_aids_1_el_summary <- aidsElas(linear_aids_1_coefficients, prices = pMeans, totExp = xtMean, coefCov = vcov(linear_aids_1), df = df.residual(linear_aids_1))
+summary(linear_aids_1_el_summary)  
+  
+  
+#For Linear Model 2
+
+linear_aids_2_el <- aidsElas(linear_aids_2_coefficients, prices = pMeans, shares = wMeans)
+linear_aids_2_el  
+linear_aids_2_el_summary <- aidsElas(linear_aids_2_coefficients, prices = pMeans, totExp = xtMean, coefCov = vcov(linear_aids_2), df = df.residual(linear_aids_2))
+summary(linear_aids_1_el_summary)  
+  
+  
+#For Non Linear Model 1 
+
+nonlinear_aids_1_el <- aidsElas(nonlinear_aids_1_coefficients, prices = pMeans, shares = wMeans)
+nonlinear_aids_1_el
+nonlinear_aids_1_el_summary <- aidsElas(nonlinear_aids_1_coefficients, prices = pMeans, totExp = xtMean, coefCov = vcov(nonlinear_aids_1), df = df.residual(nonlinear_aids_1))
+summary(nonlinear_aids_1_el_summary)
+
+
+
+
+
+  
+  
