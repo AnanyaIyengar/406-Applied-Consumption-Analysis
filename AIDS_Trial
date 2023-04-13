@@ -115,6 +115,12 @@ nonlinear_aids_1_el
 nonlinear_aids_1_el_summary <- aidsElas(nonlinear_aids_1_coefficients, prices = pMeans, totExp = xtMean, coefCov = vcov(nonlinear_aids_1), df = df.residual(nonlinear_aids_1))
 summary(nonlinear_aids_1_el_summary)
 
+################################################################################
+
+#Downloading Data 
+
+write.csv(Blanciforti86, "C:\\Ananya Iyengar\\Delhi School of Economics\\406_Applied Consumption Analysis\\data.csv", row.names = FALSE)
+
 
 
 
