@@ -114,6 +114,42 @@ new_names_val <-  c("HHID", "val_101" ,  "val_102" ,  "val_103" ,  "val_104"  , 
 colnames(wide_total_cons_qty) <- new_names_qty
 colnames(wide_total_cons_value) <- new_names_val
 
+#Dealing with 0 variables 
+
+wide_total_cons_qty$qty_169 <- rowSums(wide_total_cons_qty[c("qty_160",   "qty_161" ,  "qty_162",  "qty_163", "qty_164",   "qty_165" , 
+                                                             "qty_166",   "qty_167")], na.rm = TRUE)
+
+
+wide_total_cons_qty$qty_199 <- rowSums(wide_total_cons_qty[c("qty_190"  , "qty_191",   "qty_192",   "qty_193",   "qty_194" ,  
+                                                             "qty_195", "qty_196")], na.rm = TRUE)
+
+wide_total_cons_qty$qty_219 <- rowSums(wide_total_cons_qty[c("qty_200",   "qty_201" ,  "qty_202" ,  "qty_203",   "qty_204" ,  "qty_205",   "qty_206",  
+                                                             "qty_207",   "qty_208",   "qty_210",   "qty_211",   "qty_212" ,  "qty_213",   "qty_214" , 
+                                                             "qty_215",   "qty_216" ,  "qty_217")], na.rm = TRUE)
+
+
+wide_total_cons_qty$qty_239 <- rowSums(wide_total_cons_qty[c("qty_220",   "qty_221",   "qty_222" ,  "qty_223" , 
+                                                             "qty_224",   "qty_225",  "qty_226",   "qty_227",  
+                                                             "qty_228"  , "qty_230" ,  "qty_231","qty_232"  , "qty_233" ,  
+                                                             "qty_234",   "qty_235",   "qty_236" ,  "qty_237",   "qty_238")], na.rm = TRUE)
+
+wide_total_cons_qty$qty_279 <- rowSums(wide_total_cons_qty[c("qty_270" , "qty_271"  , "qty_272",   "qty_273",   "qty_274",   "qty_275" ,  "qty_276", 
+                                                             "qty_277")], na.rm = TRUE)
+
+wide_total_cons_qty$qty_289 <- rowSums(wide_total_cons_qty[c("qty_280",   "qty_281",   "qty_282",   "qty_283",   "qty_284")], na.rm = TRUE)
+
+wide_total_cons_qty$qty_299 <- rowSums(wide_total_cons_qty[c("qty_290" ,  "qty_291" ,  "qty_292",   "qty_293",   "qty_294" ,  
+                                                             "qty_295",   "qty_296")], na.rm = TRUE)
+
+wide_total_cons_qty$qty_309 <- rowSums(wide_total_cons_qty[c("qty_300",  
+                                                             "qty_301",   "qty_302")], na.rm = TRUE)
+
+wide_total_cons_qty$qty_319 <- rowSums(wide_total_cons_qty[c("qty_310",   "qty_311" ,  "qty_312",   "qty_313" ,  "qty_314", "qty_315",  
+                                                             "qty_316", "qty_317")], na.rm = TRUE)
+
+wide_total_cons_qty$qty_329 <- rowSums(wide_total_cons_qty[c("qty_321" ,  "qty_322" , 
+                                                             "qty_323",   "qty_324",   "qty_325")], na.rm = TRUE)
+
 ################################################################################
 
 #Selecting Relevant Variables
