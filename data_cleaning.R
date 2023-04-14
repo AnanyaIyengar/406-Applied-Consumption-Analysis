@@ -147,3 +147,8 @@ food_val <- wide_total_cons_value%>%dplyr::select("HHID", "val_129", "val_139", 
 
 unique_cov <- dplyr::distinct(covariates)
 
+################################################################################
+
+#Converting quantities to kilogram (kg) terms 
+
+food_merged <- food_merged%>%dplyr::mutate(across(c("qty_129", "qty_139", "qty_159", "qty_169", "qty_179", "qty_189", "qty_199", "qty_219", "qty_239", "qty_249", "qty_269", "qty_279", "qty_289", "qty_299", "qty_309", "qty_319", "qty_329"), function(x) x/1000))
