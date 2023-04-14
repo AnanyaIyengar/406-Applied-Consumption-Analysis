@@ -1,6 +1,6 @@
 ###################################
 ###DATA CLEANING: CONSUMPTION 68###
-###Ananya Iyengar##################
+###Ananya & Rajsi##################
 ###################################
 
 #Setting Working Directory
